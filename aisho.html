@@ -94,15 +94,6 @@
 
   footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:24px;}
   footer a,footer span{color:var(--ink-soft);cursor:pointer;text-decoration:underline;}
-  /* インタースティシャル広告 */
-  .ad-interstitial{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;flex-direction:column;}
-  .ad-interstitial.visible{display:flex;animation:fade .3s ease;}
-  .ad-interstitial-bg{position:absolute;inset:0;background:rgba(0,0,0,0.6);}
-  .ad-interstitial-box{position:relative;z-index:1;background:var(--surface);border-radius:20px;padding:20px 18px 18px;max-width:340px;width:90%;box-shadow:0 16px 48px rgba(0,0,0,0.25);}
-  .ad-interstitial-label{font-size:10px;color:var(--ink-soft);letter-spacing:0.15em;margin-bottom:8px;text-align:center;}
-  .ad-interstitial-close{position:absolute;top:10px;right:14px;font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1;font-weight:700;}
-  .ad-interstitial-close:hover{color:var(--ink);}
-  .ad-interstitial-timer{font-size:10px;color:var(--ink-soft);text-align:center;margin-top:10px;}
 </style>
 </head>
 <body>
@@ -353,7 +344,6 @@ function pick(a,b){
   document.getElementById('selB').value=b;
   renderMatch();
   document.getElementById('matchResult').scrollIntoView({behavior:'smooth',block:'center'});
-  showInterstitial();
 }
 
 document.getElementById('aboutLink').onclick=()=>{document.getElementById('aboutModal').style.display='flex';};
@@ -362,45 +352,6 @@ document.getElementById('toQuiz').onclick=(e)=>{e.preventDefault(); location.hre
 buildSelectors();
 buildMatrix();
 renderMatch();
-
-/* インタースティシャル広告 */
-function showInterstitial(){
-  const el=document.getElementById('adInterstitial');
-  const btn=document.getElementById('adCloseBtn');
-  const timer=document.getElementById('adTimer');
-  btn.style.display='none';
-  el.classList.add('visible');
-  let sec=3;
-  timer.textContent=sec+'秒後に閉じられます';
-  const iv=setInterval(()=>{
-    sec--;
-    if(sec<=0){
-      clearInterval(iv);
-      btn.style.display='block';
-      timer.textContent='タップして閉じる';
-    } else {
-      timer.textContent=sec+'秒後に閉じられます';
-    }
-  },1000);
-}
-function closeInterstitial(){
-  const btn=document.getElementById('adCloseBtn');
-  if(btn.style.display==='none') return;
-  document.getElementById('adInterstitial').classList.remove('visible');
-}
 </script>
-<!-- インタースティシャル広告 -->
-<div class="ad-interstitial" id="adInterstitial">
-  <div class="ad-interstitial-bg" onclick="closeInterstitial()"></div>
-  <div class="ad-interstitial-box">
-    <span class="ad-interstitial-close" id="adCloseBtn" onclick="closeInterstitial()" style="display:none;">×</span>
-    <div class="ad-interstitial-label">スポンサー</div>
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/s/4fa0dc6e33f53216701933ffc8760f88"></script>
-    <!-- admax -->
-    <div class="ad-interstitial-timer" id="adTimer">3秒後に閉じられます</div>
-  </div>
-</div>
-
 </body>
 </html>
