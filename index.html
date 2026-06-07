@@ -120,8 +120,12 @@
   .type-cell-name{font-size:11px;font-weight:700;color:var(--ink);line-height:1.4;}
 
   /* フッター */
-  footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:30px;letter-spacing:0.05em;}
+  footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:30px;letter-spacing:0.05em;padding-bottom:70px;}
   footer a{color:var(--ink-soft);}
+
+  /* Admax */
+  .admax-wrap{margin:16px auto 18px;text-align:center;max-width:340px;}
+  .admax-sticky{position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surface);border-top:1px solid var(--line);padding:6px 0 8px;text-align:center;box-shadow:0 -4px 16px rgba(0,0,0,0.06);}
 
   .screen{display:none;animation:fade .5s ease;}
   .screen.active{display:block;}
@@ -160,6 +164,11 @@
         <div class="hero-meta-item"><div class="hero-meta-num">1</div><div class="hero-meta-label">分でわかる</div></div>
         <div class="hero-meta-item"><div class="hero-meta-num">8</div><div class="hero-meta-label">タイプ</div></div>
       </div>
+      <!-- admax -->
+      <div class="admax-wrap">
+        <script src="https://adm.shinobi.jp/s/af97f77042139ca05ce38aaa04a5b748"></script>
+      </div>
+      <!-- admax -->
       <button class="btn" onclick="startQuiz()">診断スタート</button>
     </div>
   </section>
@@ -424,5 +433,10 @@ document.getElementById('aboutLink').onclick=()=>{
 };
 function closeAbout(){document.getElementById('aboutModal').classList.remove('visible');}
 </script>
+<!-- admax sticky bottom -->
+<div class="admax-sticky">
+  <script src="https://adm.shinobi.jp/s/af97f77042139ca05ce38aaa04a5b748"></script>
+</div>
+<!-- admax -->
 </body>
 </html>
